@@ -30,9 +30,9 @@ public class JokeQueryService {
         restTemplate = restTemplateBuilder.build();
     }
 
-    public static final String ENDPOINT = "https://v2.jokeapi.dev/joke/{category}?amount={numJokes}";
+    public static final String ENDPOINT = "https://v2.jokeapi.dev/joke/get?category={category}?amount={numJokes}";
 
-    public String getJSON(String category, int numJokes) throws HttpClientErrorException {
+    public String getJSON(String category, String numJokes) throws HttpClientErrorException {
         log.info("category={}, numJokes={}", category, numJokes);
 
         HttpHeaders headers = new HttpHeaders();
@@ -42,7 +42,7 @@ public class JokeQueryService {
 
         Map<String, String> uriVariables = Map.of(
             "category", category,
-            "numJokes", Integer.toString(numJokes)
+            "numJokes", numJokes
         );
 
         ResponseEntity<String> response = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
