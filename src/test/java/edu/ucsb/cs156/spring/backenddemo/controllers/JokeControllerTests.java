@@ -41,11 +41,11 @@ public class JokeControllerTests {
     public void test_getJokes() throws Exception {
     
         String fakeJsonResult="{ \"fake\" : \"result\" }";
-        String numJokes = "1";
+        String amount = "1";
         String category = "Misc";
-        when(mockJokeQueryService.getJSON(eq(category),eq(numJokes))).thenReturn(fakeJsonResult);
+        when(mockJokeQueryService.getJSON(eq(category),eq(amount))).thenReturn(fakeJsonResult);
 
-        String url = String.format("/api/jokes/get?category=%s&amount=%s",category,numJokes);
+        String url = String.format("/api/jokes/get?category=%s&amount=%s", category, amount);
 
         MvcResult response = mockMvc
             .perform( get(url).contentType("application/json"))

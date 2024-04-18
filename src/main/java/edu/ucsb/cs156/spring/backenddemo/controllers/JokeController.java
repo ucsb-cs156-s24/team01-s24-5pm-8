@@ -18,8 +18,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-
-@Tag(name="Jokes from https://v2.jokeapi.dev/")
+@Tag(name = "Jokes from https://v2.jokeapi.dev/")
 @Slf4j
 @RestController
 @RequestMapping("/api/jokes")
@@ -28,17 +27,23 @@ public class JokeController {
 
     @Autowired
     JokeQueryService jokeQueryService;
+
     @Operation(summary = "Get jokes for a given category and amount")
-    /* description = "Valid categories are: Any, Misc, Programming, Dark, Pun, Spooky, Christmas" */
+    /*
+     * description =
+     * "Valid categories are: Any, Misc, Programming, Dark, Pun, Spooky, Christmas"
+     */
     @GetMapping("/get")
 
     public ResponseEntity<String> getJokes(
-        /* possible categories are:"Any, Misc, Programming, Dark, Pun, Spooky, Christmas */
-        @Parameter(name="amount", description="amount of jokes to get, e.g. '1' or '2'", example="'1' or '2'") @RequestParam String numJokes,
-        @Parameter(name="category", description="category of joke", example="'Programming' or 'Spooky'") @RequestParam String category
-    ) throws JsonProcessingException {
-        log.info("getJokes: category={} numJokes={}", category, numJokes);
-        String result = jokeQueryService.getJSON(category, numJokes);
+            /*
+             * possible categories are:"Any, Misc, Programming, Dark, Pun, Spooky, Christmas
+             */
+            @Parameter(name = "amount", description = "amount of jokes to get", example = "2") @RequestParam String amount,
+            @Parameter(name = "category", description = "category of joke", example = "Any") @RequestParam String category)
+            throws JsonProcessingException {
+        log.info("getJokes: category={} amount={}", category, amount);
+        String result = jokeQueryService.getJSON(category, amount);
         return ResponseEntity.ok().body(result);
     }
 }
