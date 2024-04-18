@@ -15,25 +15,25 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 @RestClientTest(LocationQueryService.class)
 public class LocationQueryServiceTests {
 
-    // @Autowired
-    // private MockRestServiceServer mockRestServiceServer;
+    @Autowired
+    private MockRestServiceServer mockRestServiceServer;
 
-    // @Autowired
-    // private LocationQueryService locationQueryService;
+    @Autowired
+    private LocationQueryService locationQueryService;
 
-    // @Test
-    // public void test_getJSON() {
-    //     String location = "Isla Vista";
-    //     String expectedURL = LocationQueryService.ENDPOINT.replace("{location}", location);
+    @Test
+    public void test_getJSON() {
+        String location = "Isla Vista";
+        String expectedURL = LocationQueryService.ENDPOINT.replace("{location}", location);
 
-    //     String fakeJsonResult = "{ \"fake\" : \"result\" }";
+        String fakeJsonResult = "{ \"fake\" : \"result\" }";
 
-    //     this.mockRestServiceServer.expect(requestTo(expectedURL))
-    //             .andExpect(header("Accept", MediaType.APPLICATION_JSON.toString()))
-    //             .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
-    //             .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
+        this.mockRestServiceServer.expect(requestTo(expectedURL))
+                .andExpect(header("Accept", MediaType.APPLICATION_JSON.toString()))
+                .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
+                .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
 
-    //     String actualResult = locationQueryService.getJSON(location);
-    //     assertEquals(fakeJsonResult, actualResult);
-    // }
+        String actualResult = locationQueryService.getJSON(location);
+        assertEquals(fakeJsonResult, actualResult);
+    }
 }
