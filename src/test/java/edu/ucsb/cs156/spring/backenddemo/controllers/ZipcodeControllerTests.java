@@ -45,7 +45,7 @@ public class ZipCodeControllerTests {
         .andExpect(status().isOk()).andReturn();
 
     String responseString = response.getResponse().getContentAsString();
-
+    
     assertEquals(fakeJsonResult, responseString);
   }
 
