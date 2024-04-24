@@ -30,7 +30,7 @@ public class ZipCodeControllerTests {
   @MockBean
   ZipCodeQueryService mockZipCodeQueryService;
 
-
+  
   @Test
   public void test_getZipCodes() throws Exception {
   
