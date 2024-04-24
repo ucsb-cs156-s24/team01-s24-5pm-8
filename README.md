@@ -13,7 +13,7 @@ Lab instructions: <https://ucsb-cs156.github.io/s24/lab/team01.html>
 |Xinyao S.  |xinyao-song     | `JokeQueryService`          | `JokeController`          |
 ```
 
-Repo: https://github.com/ucsb-cs156-s24/s24-5pm-8-team01
+Repo: https://github.com/ucsb-cs156-s24/team01-s24-5pm-8
 
 On Heroku: http://team01.dokku-16.cs.ucsb.edu/
 
