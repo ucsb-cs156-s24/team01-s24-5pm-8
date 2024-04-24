@@ -25,10 +25,10 @@ public class JokeQueryServiceTests {
     public void test_getJSON() {
         /* possible categories are:"Any, Misc, Programming, Dark, Pun, Spooky, Christmas */
         String category = "Misc";
-        int numJokes = 1;
+        String amount = "1";
         
         String expectedURL = JokeQueryService.ENDPOINT.replace("{category}", category)
-                                                     .replace("{numJokes}", Integer.toString(numJokes));
+                                                     .replace("{amount}", amount);
 
         String fakeJsonResult = "{ \"fake\" : \"result\" }";
 
@@ -37,7 +37,7 @@ public class JokeQueryServiceTests {
                                   .andExpect(header("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                                   .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
 
-        String actualResult = jokeQueryService.getJSON(category, numJokes);
+        String actualResult = jokeQueryService.getJSON(category, amount);
         assertEquals(fakeJsonResult, actualResult);
     }
 }
